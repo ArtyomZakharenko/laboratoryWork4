@@ -12,8 +12,10 @@ int main()
 {
     int amountOfStrings;
     char ** array = CreateArray(&amountOfStrings);
+    
     FillArray(array, amountOfStrings);
     ShowArray(array, amountOfStrings);
+    
     SortArray(array, amountOfStrings);
     ShowArray(array, amountOfStrings);
     
@@ -28,6 +30,9 @@ char ** CreateArray(int * size){
     printf("\n");
     
     arr = (char **)calloc(*size, sizeof(char *));
+        for(i = 0; i < 6; i++){
+            arr[i] = (char*)calloc(6, sizeof(char));
+        }
     
     return arr;
 }
@@ -36,8 +41,8 @@ void FillArray(char ** arr, int size){
     int i;
     
     for(i = 0; i < size; i++){
-        printf("Enter string %d: ", i+1);
-        scanf("%ms", &arr[i]);
+        printf("Enter string %d (max 5 numbers): ", i+1);
+        scanf("%5ms", &arr[i]);
     }
     printf("\n");
 }
